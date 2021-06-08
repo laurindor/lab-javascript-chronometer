@@ -17,7 +17,9 @@ class Chronometer {
 
   getMinutes() {
 
-    return Math.floor(this.currentTime>60) 
+   let minutes = Math.floor(this.currentTime>60);
+  
+   return minutes;
 
   }
 
@@ -25,22 +27,25 @@ class Chronometer {
 
   getSeconds() {
 
-    return Math.floor(this.currentTime>60) 
+  let seconds = Math.floor(this.currentTime>60); 
+  return seconds;
+
 
   }
 
-  computeTwoDigitNumber(value) {
-    // ... your code goes here
-  }
+  computeTwoDigitNumber(value)  {
+
+    return (this.currentTime < 10 ? '0' : '') + this.currentTime
+   
+ }
 
   stop() {
-    // ... your code goes here
+    
   }
 
   reset() {
     
-    Chronometer.this.currentTime = 0; 
-  
+   
   }
 
   split() {

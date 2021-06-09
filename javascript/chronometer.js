@@ -35,21 +35,36 @@ class Chronometer {
 
   computeTwoDigitNumber(value)  {
 
+    if(value < 10) {
+      return "0" + String(value);
+    } else {
+      return value.toString();
+    }
+
+    }
+
     return (this.currentTime < 10 ? '0' : '') + this.currentTime
    
  }
 
-  stop() {
+  stop() { 
+    clearInterval(this.intervalId);
+  
+  
+
     
   }
 
   reset() {
-    
+  this.currentTime = 0;   
    
   }
 
   split() {
-    // ... your code goes here
+    const minutes = this.computeTwoDigitNumber(this.getMinutes());
+    const seconds = this.computeTwoDigitNumber(this.getSeconds());
+
+    return ${minutes} ${seconds}
   }
 }
 

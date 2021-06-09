@@ -14,32 +14,63 @@ const milUniElement = document.getElementById('milUni');
 const splitsElement = document.getElementById('splits');
 
 function printTime() {
-  // ... your code goes here
+  setInterval(() => {
+    const seconds = printSeconds();
+    const minutes = printMinutes();
+  
+   console.log ("tick", minutes, seconds); 
+   //this is not necessary, just checking if it works 
+
+   minDecElement.innerTextL = minutes[0]
+   minUniElement.innerTextL = minutes[1]
+   secDecElement.innerTextL = seconds[0]
+   secUniElement.innerTextL = seconds[1];
+ }, 1000);
 }
+   
+
 
 function printMinutes() {
-  // ... your code goes here
+  return chronometer.computeTwoDigitNumber(chronometer.getMinutes());
 }
 
 function printSeconds() {
-  // ... your code goes here
+
+  return chronometer.computeTwoDigitNumber(chronometer.getSeconds());
 }
 
 // ==> BONUS
 function printMilliseconds() {
-  // ... your code goes here
+
+  //get the string with text
+const timeMark = chronometer.split(); 
+
+//create the <li></li> element to print
+const newLi = document.createElement("li");
+
+//Set the text to the time string
+newLi.innerText = timeMark;
+
+//append it to the DOM
+splitsElement.appendChild(newLi);
 }
 
 function printSplit() {
-  // ... your code goes here
+ 
 }
 
 function clearSplits() {
-  // ... your code goes here
+    splitsElement.innerHTML = "";
+
+ // splitsElement.removeChildren();
+ 
 }
 
+
 function setStopBtn() {
-  // ... your code goes here
+  btnLeftElement.innerText = "Stop"
+  btnLeftElement.
+ 
 }
 
 function setSplitBtn() {
@@ -56,10 +87,37 @@ function setResetBtn() {
 
 // Start/Stop Button
 btnLeftElement.addEventListener('click', () => {
-  // ... your code goes here
-});
+  if (btnLeftElement.innerText === "start") {
+
+    setStopBtn();
+    setSplitBtn();
+    chronometer.start();
+    printTime();
+
+  } else if (btnLeftElement.innerText === "stop") {
+
+    setStartBtn();
+    setResetBtn();
+    chronometer.stop();
+  }
+
+  }); 
+
 
 // Reset/Split Button
 btnRightElement.addEventListener('click', () => {
-  // ... your code goes here
+  if (btnRightElement.innertext === "reset") {
+    chronometer.stop();
+    chronometer.reset();
+
+    secUniElement.innerText = "0";
+    secDe
+
+
+
+
+  }
+
+
+
 });
